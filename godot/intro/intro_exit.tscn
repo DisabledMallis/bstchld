@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://udh884hdppus"]
+
+[ext_resource type="Script" uid="uid://b6jo44blhmlcn" path="res://intro/intro_exit.gd" id="1_1p52q"]
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_35t5v"]
+[ext_resource type="PackedScene" uid="uid://cbo05pyad4fxs" path="res://map/fly_to_colombia.tscn" id="2_0mxhp"]
+[ext_resource type="Texture2D" uid="uid://b0hndjmp6f8oe" path="res://assets/origin/doomer_wojak.png" id="2_1p52q"]
+
+[sub_resource type="Animation" id="Animation_35t5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoomerWojak:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_legeg"]
+resource_name = "scene_fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoomerWojak:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1p52q"]
+_data = {
+&"RESET": SubResource("Animation_35t5v"),
+&"scene_fade_out": SubResource("Animation_legeg")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1p52q")
+next_scene = ExtResource("2_0mxhp")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-109, -351)
+scale = Vector2(3, 3)
+texture = ExtResource("1_35t5v")
+centered = false
+
+[node name="DoomerWojak" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(570, 378)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_1p52q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1p52q")
+}
+autoplay = "scene_fade_out"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

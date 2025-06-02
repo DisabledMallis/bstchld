@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://do4uxgji2uipv"]
+
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="1_hdn5a"]
+[ext_resource type="Texture2D" uid="uid://iphprje4t74x" path="res://coca_scene/coca_leaf_a.png" id="1_mkclp"]
+[ext_resource type="Script" uid="uid://bx7rmxgsdl8u1" path="res://coca_scene/coca_leaf.gd" id="2_hdn5a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfrck"]
+shader = ExtResource("1_hdn5a")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qihfy"]
+radius = 19.57
+
+[node name="LeafA" type="Sprite2D" node_paths=PackedStringArray("hitbox")]
+material = SubResource("ShaderMaterial_gfrck")
+scale = Vector2(3, 3)
+texture = ExtResource("1_mkclp")
+script = ExtResource("2_hdn5a")
+hitbox = NodePath("Hitbox")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_qihfy")
+
+[connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

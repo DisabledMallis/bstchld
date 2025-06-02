@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbo05pyad4fxs"]
+
+[ext_resource type="Script" uid="uid://ck637hmbbdyoo" path="res://map/fly_to_colombia.gd" id="1_q5xj3"]
+[ext_resource type="PackedScene" uid="uid://my0vuswphtc5" path="res://map/map_base.tscn" id="2_deqfo"]
+[ext_resource type="PackedScene" uid="uid://dh2k1132fgws7" path="res://pablo/interaction_0/pablo_dialogue_0.tscn" id="2_g57i4"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="3_1isoo"]
+[ext_resource type="Texture2D" uid="uid://cb0uvurjgnc0v" path="res://assets/origin/top-view-of-airplane-vector-illustration-isolated-free-png.png" id="3_deqfo"]
+[ext_resource type="Texture2D" uid="uid://b7tpyc0fqumjm" path="res://assets/origin/BeastChild.webp" id="6_g57i4"]
+
+[sub_resource type="Curve2D" id="Curve2D_1isoo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 517, 219, 0, 0, 0, 0, 757, 535)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih6vo"]
+shader = ExtResource("3_1isoo")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[node name="FlyToColombia" type="Node2D" node_paths=PackedStringArray("plane_sprite", "plane_path")]
+script = ExtResource("1_q5xj3")
+next_scene = ExtResource("2_g57i4")
+plane_sprite = NodePath("Path2D/PathFollow2D/Plane")
+plane_path = NodePath("Path2D/PathFollow2D")
+
+[node name="MapBase" parent="." instance=ExtResource("2_deqfo")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1isoo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(517, 219)
+rotation = 0.921247
+loop = false
+
+[node name="Plane" type="Sprite2D" parent="Path2D/PathFollow2D"]
+material = SubResource("ShaderMaterial_ih6vo")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_deqfo")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Plane"]
+rotation = 5.35816
+texture = ExtResource("6_g57i4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "
+[center]Fly to [color=YELLOW]Colombia[/color]![/center]"

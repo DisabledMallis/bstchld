@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b81fmhehnxqig"]
+
+[ext_resource type="Texture2D" uid="uid://deoan40yn47j4" path="res://assets/origin/68pb8qp1p6u9e8ef8ed71171dec00_1491777_10208361277534758_4087411678693862226_n.jpg" id="1_pjors"]
+[ext_resource type="Texture2D" uid="uid://vte1op6pbuq4" path="res://assets/origin/Pablo_Escobar_Mug.jpg.webp" id="2_umu4d"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_q5bfr"]
+[ext_resource type="Texture2D" uid="uid://cp6eiusdjmkex" path="res://assets/pablo.png" id="4_rtoh3"]
+[ext_resource type="PackedScene" uid="uid://cj671k0g2s2ke" path="res://pablo/interaction_0/pablo_dialogue_7.tscn" id="5_umu4d"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-157, -208)
+scale = Vector2(1.87692, 1.88077)
+texture = ExtResource("1_pjors")
+centered = false
+
+[node name="PabloEscobar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(677.25, 379.25)
+scale = Vector2(2, 2)
+texture = ExtResource("2_umu4d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_q5bfr")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_rtoh3")
+npc_name = "Pablo"
+npc_dialog = "This is phenominal news!"
+npc_color = Color(1, 0, 0, 1)
+next_scene = ExtResource("5_umu4d")
+dialog_duration = 1.0

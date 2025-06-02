@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5rgm2d5neumb"]
+
+[ext_resource type="Script" uid="uid://bfy1nawjf3q73" path="res://coca_scene/process_coca.gd" id="1_cmdew"]
+[ext_resource type="PackedScene" uid="uid://d0kkj6vrxm3ny" path="res://coca_scene/process_coca_1.tscn" id="2_cmdew"]
+[ext_resource type="Texture2D" uid="uid://ckaaqthrfeloo" path="res://coca_scene/coca_plantation.png" id="3_unf5r"]
+[ext_resource type="Texture2D" uid="uid://not5qcekx00j" path="res://assets/origin/trough.webp" id="4_lukbe"]
+[ext_resource type="PackedScene" uid="uid://do4uxgji2uipv" path="res://coca_scene/coca_leaf.tscn" id="5_ems54"]
+
+[node name="ProcessCoca" type="Node2D" node_paths=PackedStringArray("trough", "leaves")]
+script = ExtResource("1_cmdew")
+trough = NodePath("Trough")
+leaves = [NodePath("LeafA"), NodePath("LeafA2"), NodePath("LeafA3"), NodePath("LeafA4"), NodePath("LeafA5"), NodePath("LeafA6")]
+next_scene = ExtResource("2_cmdew")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-153, -381)
+scale = Vector2(3, 3)
+texture = ExtResource("3_unf5r")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+
+[center][color=BLACK]Process the [color=BLUE]coca[/color] leaves![/color][/center]"
+
+[node name="Trough" type="Sprite2D" parent="."]
+position = Vector2(628, 528)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("4_lukbe")
+
+[node name="LeafA" parent="." instance=ExtResource("5_ems54")]
+position = Vector2(216, 303)
+freeWhenPicked = false
+
+[node name="LeafA2" parent="." instance=ExtResource("5_ems54")]
+position = Vector2(378, 251)
+freeWhenPicked = false
+
+[node name="LeafA3" parent="." instance=ExtResource("5_ems54")]
+position = Vector2(552, 219)
+freeWhenPicked = false
+
+[node name="LeafA4" parent="." instance=ExtResource("5_ems54")]
+position = Vector2(736, 220)
+freeWhenPicked = false
+
+[node name="LeafA5" parent="." instance=ExtResource("5_ems54")]
+position = Vector2(907, 263)
+freeWhenPicked = false
+
+[node name="LeafA6" parent="." instance=ExtResource("5_ems54")]
+position = Vector2(1049, 391)
+freeWhenPicked = false

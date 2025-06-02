@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d7r7cflrn2ug"]
+
+[ext_resource type="Texture2D" uid="uid://b66h422jixmuk" path="res://coca_scene/coca_tree.png" id="1_770r3"]
+[ext_resource type="Script" uid="uid://b6etw34kon5b8" path="res://coca_scene/coca_plant.gd" id="1_ce8uj"]
+[ext_resource type="PackedScene" uid="uid://do4uxgji2uipv" path="res://coca_scene/coca_leaf.tscn" id="2_lt4cn"]
+[ext_resource type="Texture2D" uid="uid://eql3jdr6pri4" path="res://coca_scene/coca_leaf_b.png" id="4_mk5gx"]
+[ext_resource type="Texture2D" uid="uid://cw1mpqtmxxlt2" path="res://coca_scene/coca_leaf_c.png" id="5_mtbx3"]
+
+[node name="CocaPlant" type="Node2D" node_paths=PackedStringArray("coca_leaves")]
+script = ExtResource("1_ce8uj")
+coca_leaves = [NodePath("LeafA"), NodePath("LeafB"), NodePath("LeafC"), NodePath("LeafA2"), NodePath("LeafB2"), NodePath("LeafC2")]
+
+[node name="Tree" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_770r3")
+
+[node name="LeafA" parent="." instance=ExtResource("2_lt4cn")]
+position = Vector2(-75, -13)
+
+[node name="LeafA2" parent="." instance=ExtResource("2_lt4cn")]
+position = Vector2(86, 5)
+
+[node name="LeafB" parent="." instance=ExtResource("2_lt4cn")]
+position = Vector2(-18, 114)
+texture = ExtResource("4_mk5gx")
+
+[node name="LeafB2" parent="." instance=ExtResource("2_lt4cn")]
+position = Vector2(82, -219)
+texture = ExtResource("4_mk5gx")
+
+[node name="LeafC" parent="." instance=ExtResource("2_lt4cn")]
+position = Vector2(59, -88)
+texture = ExtResource("5_mtbx3")
+
+[node name="LeafC2" parent="." instance=ExtResource("2_lt4cn")]
+position = Vector2(-148, -74)
+texture = ExtResource("5_mtbx3")

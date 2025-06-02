@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://m3eta14dge06"]
+
+[ext_resource type="Script" uid="uid://b6jo44blhmlcn" path="res://intro/intro_exit.gd" id="1_fpat3"]
+[ext_resource type="Texture2D" uid="uid://deoan40yn47j4" path="res://assets/origin/68pb8qp1p6u9e8ef8ed71171dec00_1491777_10208361277534758_4087411678693862226_n.jpg" id="1_kjvme"]
+[ext_resource type="PackedScene" uid="uid://cywudyjunum7m" path="res://gerald/gerald_dialogue_0.tscn" id="2_dutey"]
+[ext_resource type="Texture2D" uid="uid://vte1op6pbuq4" path="res://assets/origin/Pablo_Escobar_Mug.jpg.webp" id="2_w7hyp"]
+
+[sub_resource type="Animation" id="Animation_3d2ln"]
+resource_name = "pablo_exit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PabloEscobar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fpat3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PabloEscobar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dutey"]
+_data = {
+&"RESET": SubResource("Animation_fpat3"),
+&"pablo_exit": SubResource("Animation_3d2ln")
+}
+
+[node name="PabloExit" type="Node2D"]
+script = ExtResource("1_fpat3")
+next_scene = ExtResource("2_dutey")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-157, -208)
+scale = Vector2(1.87692, 1.88077)
+texture = ExtResource("1_kjvme")
+centered = false
+
+[node name="PabloEscobar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(677.25, 379.25)
+scale = Vector2(2, 2)
+texture = ExtResource("2_w7hyp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dutey")
+}
+autoplay = "pablo_exit"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

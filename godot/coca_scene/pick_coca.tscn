@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq50w4875of4n"]
+
+[ext_resource type="Script" uid="uid://qu7vukjlw4bw" path="res://coca_scene/pick_coca.gd" id="1_hacnf"]
+[ext_resource type="Texture2D" uid="uid://ckaaqthrfeloo" path="res://coca_scene/coca_plantation.png" id="1_t4vvo"]
+[ext_resource type="PackedScene" uid="uid://d7r7cflrn2ug" path="res://coca_scene/coca_plant.tscn" id="2_6d76f"]
+[ext_resource type="PackedScene" uid="uid://c5rgm2d5neumb" path="res://coca_scene/process_coca_0.tscn" id="2_34034"]
+
+[node name="PickCoca" type="Node2D"]
+script = ExtResource("1_hacnf")
+next_scene = ExtResource("2_34034")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-153, -381)
+scale = Vector2(3, 3)
+texture = ExtResource("1_t4vvo")
+centered = false
+
+[node name="CocaPlant" parent="." instance=ExtResource("2_6d76f")]
+position = Vector2(558, 441)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+
+[center][color=BLACK]Pick the [color=BLUE]coca[/color] leaves![/color][/center]"
+
+[connection signal="coca_plant_farmed" from="CocaPlant" to="." method="_on_coca_plant_coca_plant_farmed"]

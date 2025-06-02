@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://mog1xr4u24lq"]
+
+[ext_resource type="Texture2D" uid="uid://deoan40yn47j4" path="res://assets/origin/68pb8qp1p6u9e8ef8ed71171dec00_1491777_10208361277534758_4087411678693862226_n.jpg" id="1_w7bgu"]
+[ext_resource type="Texture2D" uid="uid://vte1op6pbuq4" path="res://assets/origin/Pablo_Escobar_Mug.jpg.webp" id="2_aplga"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_nkb2d"]
+[ext_resource type="Texture2D" uid="uid://cp6eiusdjmkex" path="res://assets/pablo.png" id="4_g7l3w"]
+[ext_resource type="PackedScene" uid="uid://m3eta14dge06" path="res://pablo/interaction_1/pablo_dialogue_exit.tscn" id="5_w7bgu"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-157, -208)
+scale = Vector2(1.87692, 1.88077)
+texture = ExtResource("1_w7bgu")
+centered = false
+
+[node name="PabloEscobar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(677.25, 379.25)
+scale = Vector2(2, 2)
+texture = ExtResource("2_aplga")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_nkb2d")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_g7l3w")
+npc_name = "Pablo"
+npc_dialog = "He'll be able to turn the [img]res://assets/paste_icon.png[/img][color=YELLOW]paste[/color] into the [color=GOLD]Pure Colombian[/color] we all know and love!"
+npc_color = Color(1, 0, 0, 1)
+next_scene = ExtResource("5_w7bgu")
+dialog_duration = 2.0

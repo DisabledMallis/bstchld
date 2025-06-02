@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3666c7524a1h"]
+
+[ext_resource type="Script" uid="uid://bfy1nawjf3q73" path="res://coca_scene/process_coca.gd" id="1_x5ipm"]
+[ext_resource type="PackedScene" uid="uid://c02aw5e8mnj2m" path="res://pablo/interaction_1/pablo_dialogue_11.tscn" id="2_xhrup"]
+[ext_resource type="Texture2D" uid="uid://ckaaqthrfeloo" path="res://coca_scene/coca_plantation.png" id="3_xhfy1"]
+[ext_resource type="PackedScene" uid="uid://do4uxgji2uipv" path="res://coca_scene/coca_leaf.tscn" id="5_agnxy"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="6_42x5w"]
+[ext_resource type="Texture2D" uid="uid://vcvgbyg05fm6" path="res://assets/coca_paste.png" id="6_xhrup"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8qct"]
+shader = ExtResource("6_42x5w")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vf3ey"]
+radius = 129.5
+
+[node name="ProcessCoca" type="Node2D" node_paths=PackedStringArray("leaves")]
+script = ExtResource("1_x5ipm")
+leaves = [NodePath("LeafA")]
+next_scene = ExtResource("2_xhrup")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-153, -381)
+scale = Vector2(3, 3)
+texture = ExtResource("3_xhfy1")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+
+[center][color=WHITE]Pick up the [img]res://assets/paste_icon.png[/img][color=YELLOW]paste[/color]![/color][/center]"
+
+[node name="LeafA" parent="." instance=ExtResource("5_agnxy")]
+material = SubResource("ShaderMaterial_o8qct")
+position = Vector2(632, 453)
+scale = Vector2(1.59115, 1.59115)
+texture = ExtResource("6_xhrup")
+
+[node name="CollisionShape2D" parent="LeafA/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_vf3ey")
+
+[editable path="LeafA"]

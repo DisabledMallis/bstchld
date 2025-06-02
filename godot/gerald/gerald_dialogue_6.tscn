@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlkw2d42ktkkl"]
+
+[ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_fivb4"]
+[ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="2_bawfs"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_gbf2m"]
+[ext_resource type="Texture2D" uid="uid://dqsl3047i0ikp" path="res://assets/gerald_icon.png" id="4_majmv"]
+[ext_resource type="PackedScene" uid="uid://eifjseeod0d0" path="res://gerald/gerald_dialogue_7.tscn" id="5_fivb4"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -142)
+scale = Vector2(1.27533, 1.27794)
+texture = ExtResource("1_fivb4")
+centered = false
+
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(638, 387)
+scale = Vector2(0.299618, 0.299618)
+texture = ExtResource("2_bawfs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_gbf2m")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_majmv")
+npc_name = "Gerald"
+npc_dialog = "Great! I f*cking hate [color=AQUA]cyclists[/color]. Do you think you could take a few out for me?"
+npc_color = Color(1, 0, 1, 1)
+next_scene = ExtResource("5_fivb4")

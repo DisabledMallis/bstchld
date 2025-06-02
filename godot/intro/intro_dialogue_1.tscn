@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dueuf3wta2h4x"]
+
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_85chc"]
+[ext_resource type="Texture2D" uid="uid://b0hndjmp6f8oe" path="res://assets/origin/doomer_wojak.png" id="2_lusds"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_2f1gr"]
+[ext_resource type="PackedScene" uid="uid://w6i7ll6vbat2" path="res://intro/intro_dialogue_2.tscn" id="4_lusds"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-109, -347)
+scale = Vector2(3, 3)
+texture = ExtResource("1_85chc")
+centered = false
+
+[node name="DoomerWojak" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(593, 299)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_lusds")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_2f1gr")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("2_lusds")
+npc_name = "???"
+npc_dialog = "Please get us some more!"
+next_scene = ExtResource("4_lusds")
+dialog_duration = 0.5

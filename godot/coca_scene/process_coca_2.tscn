@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://d35tl6qvtxpyd"]
+
+[ext_resource type="Script" uid="uid://bfy1nawjf3q73" path="res://coca_scene/process_coca.gd" id="1_1vbo8"]
+[ext_resource type="PackedScene" uid="uid://b3666c7524a1h" path="res://coca_scene/process_coca_3.tscn" id="2_vf3ey"]
+[ext_resource type="Texture2D" uid="uid://ckaaqthrfeloo" path="res://coca_scene/coca_plantation.png" id="3_x5w4w"]
+[ext_resource type="Texture2D" uid="uid://bl7dtvrits6ln" path="res://assets/trough_mixture_0.png" id="4_nk7dy"]
+[ext_resource type="PackedScene" uid="uid://do4uxgji2uipv" path="res://coca_scene/coca_leaf.tscn" id="5_vf3ey"]
+[ext_resource type="Texture2D" uid="uid://dutnhohx8m7ce" path="res://assets/origin/limes.png" id="7_1ca0n"]
+[ext_resource type="Texture2D" uid="uid://b0miap051c1ki" path="res://assets/origin/gasoline.png" id="8_1vbo8"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="8_iyf16"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8qct"]
+shader = ExtResource("8_iyf16")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vf3ey"]
+radius = 378.32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vf3ey"]
+shader = ExtResource("8_iyf16")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 7.528
+shader_parameter/pattern = 0
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ca0n"]
+radius = 297.1
+
+[node name="ProcessCoca" type="Node2D" node_paths=PackedStringArray("trough", "leaves")]
+script = ExtResource("1_1vbo8")
+trough = NodePath("Trough")
+leaves = [NodePath("LeafA"), NodePath("LeafA2")]
+next_scene = ExtResource("2_vf3ey")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-153, -381)
+scale = Vector2(3, 3)
+texture = ExtResource("3_x5w4w")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+
+[center][color=WHITE]Add the [color=LIME]Lime[/color] and [color=ORANGE]Gasoline[/color]![/color][/center]"
+
+[node name="Trough" type="Sprite2D" parent="."]
+position = Vector2(628, 528)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("4_nk7dy")
+
+[node name="LeafA" parent="." instance=ExtResource("5_vf3ey")]
+material = SubResource("ShaderMaterial_o8qct")
+position = Vector2(477, 261)
+scale = Vector2(0.190104, 0.190104)
+texture = ExtResource("7_1ca0n")
+
+[node name="CollisionShape2D" parent="LeafA/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_vf3ey")
+
+[node name="LeafA2" parent="." instance=ExtResource("5_vf3ey")]
+material = SubResource("ShaderMaterial_vf3ey")
+position = Vector2(754, 235)
+scale = Vector2(0.342501, 0.342501)
+texture = ExtResource("8_1vbo8")
+
+[node name="CollisionShape2D" parent="LeafA2/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_1ca0n")
+
+[editable path="LeafA"]
+[editable path="LeafA2"]

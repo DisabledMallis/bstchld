@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dvowytntof6jh"]
+
+[node name="InvalidScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+
+
+
+[center][color=RED]ERROR[/color][/center]
+
+[center]No next valid scene![/center]
+
+
+
+
+[center]Please report this bug, you should never ever see this screen.[/center]
+
+
+
+
+
+
+
+
+
+[center][img]res://assets/origin/discord.png[/img] @disabledmallis[/center]"

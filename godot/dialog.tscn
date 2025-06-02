@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=3 uid="uid://biiwq4r5mtuty"]
+
+[ext_resource type="Script" uid="uid://db4vputwtj4ur" path="res://dialog.gd" id="1_7voku"]
+[ext_resource type="Texture2D" uid="uid://btkmtwgs21024" path="res://icon.svg" id="2_5wlj5"]
+[ext_resource type="PackedScene" uid="uid://dvowytntof6jh" path="res://invalid_scene.tscn" id="3_4uc3s"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="3_w7j6r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7voku"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uc3s"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="Animation" id="Animation_4uc3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/NpcDialog:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_w7j6r"]
+resource_name = "speech_display"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/NpcDialog:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uc3s"]
+_data = {
+&"RESET": SubResource("Animation_4uc3s"),
+&"speech_display": SubResource("Animation_w7j6r")
+}
+
+[node name="Dialog" type="Control" node_paths=PackedStringArray("npc_icon_node", "primary_panel", "npc_icon_panel", "npc_name_text", "npc_dialog_text", "animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7voku")
+npc_icon = ExtResource("2_5wlj5")
+next_scene = ExtResource("3_4uc3s")
+npc_icon_node = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer/PanelContainer/NpcIcon")
+primary_panel = NodePath("MarginContainer/PanelContainer")
+npc_icon_panel = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer/PanelContainer")
+npc_name_text = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/NpcName")
+npc_dialog_text = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/NpcDialog")
+animator = NodePath("AnimationPlayer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7voku")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4uc3s")
+
+[node name="NpcIcon" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_w7j6r")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NpcName" type="RichTextLabel" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "Unknown Character"
+fit_content = true
+
+[node name="NpcDialog" type="RichTextLabel" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "I have nothing to say, you should never see this message."
+fit_content = true
+
+[node name="NextLabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = ">  "
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4uc3s")
+}
+autoplay = "speech_display"

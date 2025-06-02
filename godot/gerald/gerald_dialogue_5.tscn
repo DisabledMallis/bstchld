@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8m2ydq168o1r"]
+
+[ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_2dsef"]
+[ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="2_fah3r"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_i6cnd"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="4_kn7eg"]
+[ext_resource type="PackedScene" uid="uid://dlkw2d42ktkkl" path="res://gerald/gerald_dialogue_6.tscn" id="5_fah3r"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -142)
+scale = Vector2(1.27533, 1.27794)
+texture = ExtResource("1_2dsef")
+centered = false
+
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(638, 387)
+scale = Vector2(0.299618, 0.299618)
+texture = ExtResource("2_fah3r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_i6cnd")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_kn7eg")
+npc_name = "BeastChild"
+npc_dialog = "Anything for you, [color=PURPLE]Gerald[/color]!"
+npc_color = Color(0, 1, 0, 1)
+next_scene = ExtResource("5_fah3r")
+dialog_duration = 1.0

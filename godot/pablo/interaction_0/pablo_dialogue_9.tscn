@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw5lecbfq7mg2"]
+
+[ext_resource type="Texture2D" uid="uid://deoan40yn47j4" path="res://assets/origin/68pb8qp1p6u9e8ef8ed71171dec00_1491777_10208361277534758_4087411678693862226_n.jpg" id="1_rteq2"]
+[ext_resource type="Texture2D" uid="uid://vte1op6pbuq4" path="res://assets/origin/Pablo_Escobar_Mug.jpg.webp" id="2_hrn8c"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_wddkd"]
+[ext_resource type="Texture2D" uid="uid://cp6eiusdjmkex" path="res://assets/pablo.png" id="4_hvrgs"]
+[ext_resource type="PackedScene" uid="uid://pgxw5rdb7agf" path="res://pablo/interaction_0/pablo_dialogue_10.tscn" id="5_hrn8c"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-157, -208)
+scale = Vector2(1.87692, 1.88077)
+texture = ExtResource("1_rteq2")
+centered = false
+
+[node name="PabloEscobar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(677.25, 379.25)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hrn8c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_wddkd")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_hvrgs")
+npc_name = "Pablo"
+npc_dialog = "You'll have to make the product yourself!"
+npc_color = Color(1, 0, 0, 1)
+next_scene = ExtResource("5_hrn8c")

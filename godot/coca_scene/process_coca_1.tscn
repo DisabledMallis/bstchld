@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0kkj6vrxm3ny"]
+
+[ext_resource type="Script" uid="uid://bfy1nawjf3q73" path="res://coca_scene/process_coca.gd" id="1_nqc3e"]
+[ext_resource type="PackedScene" uid="uid://d35tl6qvtxpyd" path="res://coca_scene/process_coca_2.tscn" id="2_hsvow"]
+[ext_resource type="Texture2D" uid="uid://ckaaqthrfeloo" path="res://coca_scene/coca_plantation.png" id="3_reh0n"]
+[ext_resource type="Texture2D" uid="uid://not5qcekx00j" path="res://assets/origin/trough.webp" id="4_826nc"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="4_db51h"]
+[ext_resource type="Texture2D" uid="uid://b7s1f4hdmtmlb" path="res://assets/origin/bucket.webp" id="5_hsvow"]
+[ext_resource type="Texture2D" uid="uid://iphprje4t74x" path="res://coca_scene/coca_leaf_a.png" id="5_reh0n"]
+[ext_resource type="Texture2D" uid="uid://eql3jdr6pri4" path="res://coca_scene/coca_leaf_b.png" id="6_826nc"]
+[ext_resource type="Script" uid="uid://bx7rmxgsdl8u1" path="res://coca_scene/coca_leaf.gd" id="6_hsvow"]
+[ext_resource type="Texture2D" uid="uid://cw1mpqtmxxlt2" path="res://coca_scene/coca_leaf_c.png" id="7_db51h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2jsp"]
+shader = ExtResource("4_db51h")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsvow"]
+radius = 326.437
+height = 1024.0
+
+[node name="ProcessCoca" type="Node2D" node_paths=PackedStringArray("trough", "leaves")]
+script = ExtResource("1_nqc3e")
+trough = NodePath("Trough")
+leaves = [NodePath("Bucket")]
+next_scene = ExtResource("2_hsvow")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-153, -381)
+scale = Vector2(3, 3)
+texture = ExtResource("3_reh0n")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "
+
+[center][color=BLACK]Add the [color=BLUE]water[/color] and [color=ORANGE]Nitric Acid[/color] mixture![/color][/center]"
+
+[node name="Trough" type="Sprite2D" parent="."]
+position = Vector2(628, 528)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("4_826nc")
+
+[node name="CocaLeafA" type="Sprite2D" parent="."]
+position = Vector2(625, 483)
+scale = Vector2(4, 4)
+texture = ExtResource("5_reh0n")
+
+[node name="CocaLeafA2" type="Sprite2D" parent="."]
+position = Vector2(625, 483)
+scale = Vector2(4, 4)
+texture = ExtResource("6_826nc")
+
+[node name="CocaLeafA3" type="Sprite2D" parent="."]
+position = Vector2(586, 504)
+scale = Vector2(4, 4)
+texture = ExtResource("7_db51h")
+
+[node name="CocaLeafA4" type="Sprite2D" parent="."]
+position = Vector2(625, 483)
+rotation = -2.15374
+scale = Vector2(4, 4)
+texture = ExtResource("5_reh0n")
+
+[node name="Bucket" type="Sprite2D" parent="." node_paths=PackedStringArray("hitbox")]
+material = SubResource("ShaderMaterial_g2jsp")
+position = Vector2(610, 246)
+scale = Vector2(0.257324, 0.257324)
+texture = ExtResource("5_hsvow")
+script = ExtResource("6_hsvow")
+hitbox = NodePath("Hitbox")
+metadata/_custom_type_script = "uid://bx7rmxgsdl8u1"
+
+[node name="Hitbox" type="Area2D" parent="Bucket"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/Hitbox"]
+shape = SubResource("CapsuleShape2D_hsvow")
+
+[connection signal="input_event" from="Bucket/Hitbox" to="Bucket" method="_on_hitbox_input_event"]
