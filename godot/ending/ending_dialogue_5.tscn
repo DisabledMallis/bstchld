@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf6lsqb1giln"]
+
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_jqkyh"]
+[ext_resource type="Texture2D" uid="uid://b0hndjmp6f8oe" path="res://assets/origin/doomer_wojak.png" id="2_jqkyh"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_1oj82"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="4_lhxre"]
+[ext_resource type="PackedScene" uid="uid://c1hj4dkufn0rq" path="res://ending/the_end.tscn" id="5_1gbox"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-103, -333)
+scale = Vector2(3, 3)
+texture = ExtResource("1_jqkyh")
+centered = false
+
+[node name="DoomerWojak" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(609, 292)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jqkyh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_1oj82")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_lhxre")
+npc_name = "BeastChild"
+npc_dialog = "Good luck, [color=RED]you'll need it[/color]."
+npc_color = Color(0, 1, 0, 1)
+next_scene = ExtResource("5_1gbox")
+dialog_duration = 1.0

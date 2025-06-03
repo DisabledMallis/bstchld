@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://rd0mdol1ovei"]
+
+[ext_resource type="Material" uid="uid://d3jq06u43qgj0" path="res://assets/origin/Tiles133D_2K-PNG/tiles.tres" id="1_4a8ef"]
+[ext_resource type="Script" uid="uid://c3hlvmatmc2pd" path="res://scene_change_animation.gd" id="2_58tyk"]
+[ext_resource type="ArrayMesh" uid="uid://ddi5huc8vhxdu" path="res://assets/origin/20-livingroom_obj/InteriorTest.obj" id="3_uah0m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ryv5w"]
+material = ExtResource("1_4a8ef")
+
+[sub_resource type="Environment" id="Environment_row68"]
+background_mode = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_trbf2"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Room")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.342834, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteriorTest")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.36162, -0.693989, -1.04404)
+
+[sub_resource type="Animation" id="Animation_row68"]
+resource_name = "change_rooms"
+length = 5.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Room")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0333333, 1, 0, 0.342834, 0, 3, 1, 0, 4, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteriorTest")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.362, 2, 1.037, 2, 1, -1.362, -0.361219, -0.852205)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5e0h"]
+_data = {
+&"RESET": SubResource("Animation_trbf2"),
+&"change_rooms": SubResource("Animation_row68")
+}
+
+[node name="SnortSpecial" type="Node3D"]
+
+[node name="Room" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0.342834, 0)
+mesh = SubResource("BoxMesh_ryv5w")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0830726, 1.03675)
+environment = SubResource("Environment_row68")
+fov = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e5e0h")
+}
+autoplay = "change_rooms"
+script = ExtResource("2_58tyk")
+next_scene = "res://gerald/snorted_path/snort_special_dialogue_6.tscn"
+
+[node name="InteriorTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.36162, -0.693989, -1.04404)
+mesh = ExtResource("3_uah0m")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="InteriorTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75017, 0.946829, -2.16936)
+spot_angle = 0.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="InteriorTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20707, 1.16386, 1.89307)
+spot_angle = 0.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="InteriorTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0743947, 2.23183, -0.026943)
+spot_angle = 0.0

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwrfioxt04ok5"]
+
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_r3frp"]
+[ext_resource type="Texture2D" uid="uid://cg1ym0dvqunyu" path="res://assets/origin/black_wojak.png" id="2_86318"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_vg6d0"]
+[ext_resource type="Texture2D" uid="uid://dmho0d2ybnfcr" path="res://assets/baller.png" id="4_86318"]
+[ext_resource type="PackedScene" uid="uid://c76vi43wcyv5x" path="res://america/america_sale_baller/america_sale_dialogue_baller_1.tscn" id="5_86318"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-103, -333)
+scale = Vector2(3, 3)
+texture = ExtResource("1_r3frp")
+centered = false
+
+[node name="DoomerWojak" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(609, 358)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_86318")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_vg6d0")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_86318")
+npc_name = "Baller"
+npc_dialog = "What you got there, G? I ain't tryna be tricked, but I do need a little pick-me-up for this party tonight."
+next_scene = ExtResource("5_86318")
+dialog_duration = 1.0

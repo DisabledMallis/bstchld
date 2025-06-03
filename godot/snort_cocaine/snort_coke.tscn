@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2cebosd87tv6"]
+
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_7oyev"]
+[ext_resource type="Texture2D" uid="uid://c2ivqentuggo1" path="res://assets/origin/pointing.png" id="2_8ymbi"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="3_gr0pl"]
+[ext_resource type="Texture2D" uid="uid://b6rjkal01ib35" path="res://assets/origin/Sugar_trans_cut.png" id="3_i6gvb"]
+[ext_resource type="Script" uid="uid://dal75mo7wfcb" path="res://scene_change_sprite.gd" id="4_em6tp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ky0ey"]
+shader = ExtResource("3_gr0pl")
+shader_parameter/color = Color(0.764637, 0.651381, 0.204865, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em6tp"]
+radius = 1024.0
+
+[node name="SnortCoke" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-103, -333)
+scale = Vector2(3, 3)
+texture = ExtResource("1_7oyev")
+centered = false
+
+[node name="Pointing" type="Sprite2D" parent="."]
+position = Vector2(869, 565)
+texture = ExtResource("2_8ymbi")
+
+[node name="SugarTransCut" type="Sprite2D" parent="." node_paths=PackedStringArray("hitbox")]
+material = SubResource("ShaderMaterial_ky0ey")
+position = Vector2(729, 445)
+scale = Vector2(0.0918919, 0.0918919)
+texture = ExtResource("3_i6gvb")
+script = ExtResource("4_em6tp")
+next_scene = "res://snort_cocaine/snort_coke_post.tscn"
+hitbox = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="SugarTransCut"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SugarTransCut/Area2D"]
+shape = SubResource("CircleShape2D_em6tp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "
+
+[center]Click to snort the [color=GOLD]Pure Colombian[/color][/center]"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwg0qa84oihk4"]
+
+[ext_resource type="Script" uid="uid://oyfy7jq3yxjk" path="res://america/america_sale_baller/america_sale_dialogue_baller_4.gd" id="1_t1e6u"]
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_vrmbo"]
+[ext_resource type="Texture2D" uid="uid://cg1ym0dvqunyu" path="res://assets/origin/black_wojak.png" id="2_t1e6u"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_4p0dj"]
+[ext_resource type="Texture2D" uid="uid://dmho0d2ybnfcr" path="res://assets/baller.png" id="4_7ewni"]
+[ext_resource type="PackedScene" uid="uid://cg5rvmll3u6lx" path="res://america/america_sale_choice.tscn" id="6_t1e6u"]
+[ext_resource type="PackedScene" uid="uid://cy8a8trfy4bqc" path="res://america/money_animation.tscn" id="7_4p0dj"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_t1e6u")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-103, -333)
+scale = Vector2(3, 3)
+texture = ExtResource("1_vrmbo")
+centered = false
+
+[node name="DoomerWojak" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(609, 358)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_t1e6u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_4p0dj")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_7ewni")
+npc_name = "Baller"
+npc_dialog = "Word up, my man. I'll catch you later."
+next_scene = ExtResource("6_t1e6u")
+dialog_duration = 1.0
+
+[node name="MoneyAnimation" parent="CanvasLayer" instance=ExtResource("7_4p0dj")]

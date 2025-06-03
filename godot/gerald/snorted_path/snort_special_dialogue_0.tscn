@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://da7fid7turn86"]
+
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="2_juefe"]
+[ext_resource type="Texture2D" uid="uid://cqj0s43e6cdsg" path="res://assets/skull.png" id="3_qpjn8"]
+[ext_resource type="Material" uid="uid://d3jq06u43qgj0" path="res://assets/origin/Tiles133D_2K-PNG/tiles.tres" id="4_5lekj"]
+[ext_resource type="PackedScene" uid="uid://dcp27b4gtn3yv" path="res://gerald/snorted_path/snort_special_dialogue_1.tscn" id="4_juefe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ryv5w"]
+material = ExtResource("4_5lekj")
+
+[sub_resource type="Environment" id="Environment_tyquw"]
+background_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="SnortSpecial" type="Node3D"]
+
+[node name="Room" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0.342834, 0)
+mesh = SubResource("BoxMesh_ryv5w")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0830726, 1.03675)
+environment = SubResource("Environment_tyquw")
+fov = 120.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("2_juefe")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("3_qpjn8")
+npc_name = "Conscious"
+npc_dialog = "What is reality?"
+npc_color = Color(0, 1, 0, 1)
+next_scene = ExtResource("4_juefe")
+dialog_duration = 0.5

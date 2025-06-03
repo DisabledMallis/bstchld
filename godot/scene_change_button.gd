@@ -1,7 +1,7 @@
 extends Button
 class_name SceneChangeButton
 
-@export var next_scene: PackedScene;
+@export var next_scene_path: String;
 
-func _on_pressed() -> void:
-	get_tree().change_scene_to_packed(next_scene)
+func _pressed() -> void:
+	get_tree().change_scene_to_file(next_scene_path)

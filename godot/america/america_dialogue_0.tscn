@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://pkjjxls6t6j4"]
+
+[ext_resource type="Texture2D" uid="uid://cd8t3115cj7pc" path="res://assets/origin/statue_of_liberty.jpeg" id="1_usdm5"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_ocyok"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="4_t0lqy"]
+[ext_resource type="PackedScene" uid="uid://6m2w620r33g6" path="res://america/america_dialogue_1.tscn" id="4_usdm5"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-109, -347)
+scale = Vector2(0.3261, 0.3261)
+texture = ExtResource("1_usdm5")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_ocyok")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_t0lqy")
+npc_name = "BeastChild"
+npc_dialog = "Ah, good ol land of the free!"
+npc_color = Color(0, 1, 0, 1)
+next_scene = ExtResource("4_usdm5")
+dialog_duration = 0.5

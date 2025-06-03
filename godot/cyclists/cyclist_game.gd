@@ -4,13 +4,25 @@ extends Node2D
 @export var spawner_directions: Array[bool];
 @export var spawn_rate: float = 0.5;
 @export var cyclist: PackedScene;
+@export var score_label: RichTextLabel;
+@export var victory_score: int = 10
+@export var next_scene: PackedScene;
 
+var score_format: String;
 var timer: float = 0.0
+var score: int = 0
+
+func update_score():
+	score_label.text = score_format % [score, victory_score]
 
 func _on_cyclist_killed(cyclist: Cyclist) -> void:
-	pass
+	score += 1
+	update_score()
 
 func _process(delta: float) -> void:
+	if score >= victory_score:
+		get_tree().change_scene_to_packed(next_scene)
+		
 	if timer >= spawn_rate:
 		timer -= spawn_rate
 		
@@ -24,3 +36,7 @@ func _process(delta: float) -> void:
 			i += 1
 	
 	timer += delta
+
+func _ready() -> void:
+	score_format = score_label.text
+	update_score()

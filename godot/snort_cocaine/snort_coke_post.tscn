@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=3 uid="uid://cielqm7lxreci"]
+
+[ext_resource type="Script" uid="uid://b84kyecxvb1wl" path="res://snort_cocaine/snort_coke_post.gd" id="1_gm44t"]
+[ext_resource type="PackedScene" uid="uid://cg41s0f6gd1md" path="res://snort_cocaine/snort_coke_post_dialog_0.tscn" id="2_85i28"]
+[ext_resource type="Script" uid="uid://onfrw55fl44a" path="res://snort_cocaine/spam_money_get.gd" id="2_oh8v2"]
+[ext_resource type="Texture2D" uid="uid://xm55q8oa6vb7" path="res://assets/origin/1532309648_b29a95164e_c.jpg" id="3_6ld35"]
+[ext_resource type="PackedScene" uid="uid://cy8a8trfy4bqc" path="res://america/money_animation.tscn" id="3_gm44t"]
+
+[sub_resource type="Environment" id="Environment_jjbpc"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm44t"]
+albedo_texture = ExtResource("3_6ld35")
+
+[sub_resource type="QuadMesh" id="QuadMesh_85i28"]
+material = SubResource("StandardMaterial3D_gm44t")
+
+[sub_resource type="Animation" id="Animation_oh8v2"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Camera3D:projection")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_jjbpc"]
+resource_name = "coke_trip"
+length = 5.0
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0.737, 0, 0.676, 1, 1, 0, 1, 0, 0, 1.5, 1, 0, 0, 0, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Camera3D:projection")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(1.5, 1, 0, 0, 1, 2, 1, 0, 0, 10, 3, 1, 0, 0, 10, 4, 1, 0, 0, 0.8, 4.8, 1, 0, 0, 0.8, 5, 1, 0, 0, 0)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(2.03333, 1, 0, 0, 0, 1, 3, 1, 0.383, 0, 0, 0.924)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Camera3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(4, 1, 0, 0, 0, 1, 4.46667, 1, 0, 1, 0, 0, 5, 1, 0, 0, 0, -1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oh8v2"]
+_data = {
+&"RESET": SubResource("Animation_oh8v2"),
+&"coke_trip": SubResource("Animation_jjbpc")
+}
+
+[node name="SnortCokePost" type="Node3D"]
+script = ExtResource("1_gm44t")
+next_scene = ExtResource("2_85i28")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+environment = SubResource("Environment_jjbpc")
+projection = 1
+fov = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("QuadMesh_85i28")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oh8v2")
+}
+autoplay = "coke_trip"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_oh8v2")
+money_get_scene = ExtResource("3_gm44t")
+spawn_rate = 0.25
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

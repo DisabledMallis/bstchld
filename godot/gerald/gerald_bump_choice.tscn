@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp7c25d26dirp"]
+[gd_scene load_steps=7 format=3 uid="uid://bp7c25d26dirp"]
 
 [ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_slgon"]
 [ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="2_h4c61"]
 [ext_resource type="Texture2D" uid="uid://bwyd3fuj1sosg" path="res://assets/origin/Clipped_image_20241005_154823.png" id="2_pmivr"]
 [ext_resource type="Texture2D" uid="uid://dhqtis4d3jxio" path="res://assets/origin/Cocaine.png" id="3_pmivr"]
 [ext_resource type="Script" uid="uid://dddp0liwsbhlq" path="res://scene_change_button.gd" id="5_pmivr"]
-[ext_resource type="PackedScene" uid="uid://c28dxepdhuldn" path="res://gerald/passed_path/gerald_dialogue_pass_0.tscn" id="6_scr8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivys0"]
 shader = ExtResource("2_h4c61")
@@ -67,6 +66,7 @@ theme_override_font_sizes/font_size = 96
 text = "Snort that sh*t"
 flat = true
 script = ExtResource("5_pmivr")
+next_scene_path = "res://gerald/snorted_path/snort_special.tscn"
 
 [node name="PassIt" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -77,6 +77,6 @@ theme_override_font_sizes/font_size = 96
 text = "No"
 flat = true
 script = ExtResource("5_pmivr")
-next_scene = ExtResource("6_scr8k")
+next_scene_path = "res://gerald/passed_path/gerald_dialogue_pass_0.tscn"
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/PassIt" to="CanvasLayer/PanelContainer/VBoxContainer/PassIt" method="_on_pressed"]

@@ -8,6 +8,7 @@ radius = 170.0
 
 [node name="Cyclist" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_8lroc")
+speed = 500.0
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

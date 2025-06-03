@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3unn2e0o2mhk"]
+
+[ext_resource type="Material" uid="uid://d3jq06u43qgj0" path="res://assets/origin/Tiles133D_2K-PNG/tiles.tres" id="1_7vb5v"]
+[ext_resource type="ArrayMesh" uid="uid://ddi5huc8vhxdu" path="res://assets/origin/20-livingroom_obj/InteriorTest.obj" id="2_baicx"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_1ca1m"]
+[ext_resource type="Texture2D" uid="uid://cqj0s43e6cdsg" path="res://assets/skull.png" id="4_1t7j5"]
+[ext_resource type="PackedScene" uid="uid://b6afu55yx0dh3" path="res://gerald/snorted_path/snort_special_dialogue_9.tscn" id="5_7vb5v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ryv5w"]
+material = ExtResource("1_7vb5v")
+
+[sub_resource type="Environment" id="Environment_row68"]
+background_mode = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="SnortSpecial" type="Node3D"]
+
+[node name="Room" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 4, 0)
+mesh = SubResource("BoxMesh_ryv5w")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0830726, 1.03675)
+environment = SubResource("Environment_row68")
+fov = 60.0
+
+[node name="InteriorTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.362, -0.361219, -0.852205)
+mesh = ExtResource("2_baicx")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="InteriorTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75017, 0.946829, -2.16936)
+spot_angle = 0.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="InteriorTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20707, 1.16386, 1.89307)
+spot_angle = 0.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="InteriorTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0743947, 2.23183, -0.026943)
+spot_angle = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_1ca1m")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_1t7j5")
+npc_name = "Are you there?"
+npc_dialog = "the Child is corrupted."
+next_scene = ExtResource("5_7vb5v")
+dialog_duration = 0.5

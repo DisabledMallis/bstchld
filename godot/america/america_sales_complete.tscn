@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpqfjw165fsof"]
+
+[ext_resource type="Texture2D" uid="uid://buviec8ciyhrt" path="res://intro/alley.png" id="1_lo81m"]
+[ext_resource type="PackedScene" uid="uid://b0jy7lcqikrrt" path="res://america/america_consumption_choice.tscn" id="4_fj8gk"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="5_mr0h3"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="6_oycm8"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-103, -333)
+scale = Vector2(3, 3)
+texture = ExtResource("1_lo81m")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("5_mr0h3")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("6_oycm8")
+npc_name = "BeastChild"
+npc_dialog = "That's the majority of the [color=GOLD]Pure Colombian[/color] sold! Maybe I should try some myself?"
+npc_color = Color(0, 1, 0, 1)
+next_scene = ExtResource("4_fj8gk")
+dialog_duration = 1.0

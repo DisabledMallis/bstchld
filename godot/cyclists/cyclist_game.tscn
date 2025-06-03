@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnpwoejsgkxmx"]
+[gd_scene load_steps=11 format=3 uid="uid://cnpwoejsgkxmx"]
 
 [ext_resource type="Script" uid="uid://dp6a1slva5io3" path="res://cyclists/cyclist_game.gd" id="1_4w26i"]
 [ext_resource type="Texture2D" uid="uid://8ccrqt0axf1i" path="res://assets/origin/grass.webp" id="1_56u3q"]
 [ext_resource type="PackedScene" uid="uid://cxvc78kjci5rp" path="res://cyclists/cyclist.tscn" id="2_61bdg"]
 [ext_resource type="Texture2D" uid="uid://dnw45e65barqq" path="res://assets/origin/road.jpg" id="2_yvn4s"]
+[ext_resource type="PackedScene" uid="uid://ciqo30im1rkjc" path="res://cyclists/cyclist_victory.tscn" id="3_u4250"]
 [ext_resource type="Texture2D" uid="uid://by1gjm678icj" path="res://assets/origin/first_person_pistol.png" id="5_p3uqd"]
 [ext_resource type="Script" uid="uid://cpwlwvsk2dsqn" path="res://cyclists/first_person_pistol.gd" id="6_waqn5"]
 
@@ -46,12 +47,14 @@ _data = {
 &"intense_asf": SubResource("Animation_waqn5")
 }
 
-[node name="CyclistGame" type="Node2D" node_paths=PackedStringArray("spawners")]
+[node name="CyclistGame" type="Node2D" node_paths=PackedStringArray("spawners", "score_label")]
 script = ExtResource("1_4w26i")
-spawners = [NodePath("CyclistSpawnerA"), NodePath("CyclistSpawnerB"), NodePath("CyclistSpawnerC")]
-spawner_directions = Array[bool]([true, false, true])
+spawners = [NodePath("CyclistSpawnerA"), NodePath("CyclistSpawnerC"), NodePath("CyclistSpawnerB"), NodePath("CyclistSpawnerD")]
+spawner_directions = Array[bool]([true, false, true, false])
 spawn_rate = 5.0
 cyclist = ExtResource("2_61bdg")
+score_label = NodePath("CanvasLayer/ScoreLabel")
+next_scene = ExtResource("3_u4250")
 
 [node name="Grass" type="Sprite2D" parent="."]
 position = Vector2(645.5, 361.5)
@@ -76,23 +79,17 @@ texture = ExtResource("2_yvn4s")
 region_enabled = true
 region_rect = Rect2(0, 0, 1080, 178)
 
-[node name="Road3" type="Sprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(644, 179)
-scale = Vector2(1.22963, 1)
-texture = ExtResource("2_yvn4s")
-region_enabled = true
-region_rect = Rect2(0, 0, 1080, 178)
+[node name="CyclistSpawnerB" type="Node2D" parent="."]
+position = Vector2(1565, 649)
 
 [node name="CyclistSpawnerA" type="Node2D" parent="."]
-position = Vector2(1423, 413)
-
-[node name="CyclistSpawnerB" type="Node2D" parent="."]
-position = Vector2(-159, 184)
+position = Vector2(1414, 419)
 
 [node name="CyclistSpawnerC" type="Node2D" parent="."]
 position = Vector2(-159, 628)
+
+[node name="CyclistSpawnerD" type="Node2D" parent="."]
+position = Vector2(-412, 394)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -121,6 +118,26 @@ text = "
 
 
 [center][color=RED]KILL[/color] THE [color=AQUA]CYCLISTS[/color]!!!!!![/center]"
+
+[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+[center]%d/%d Cyclists Killed[/center]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

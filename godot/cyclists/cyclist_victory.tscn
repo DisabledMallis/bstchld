@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciqo30im1rkjc"]
+
+[ext_resource type="Texture2D" uid="uid://8ccrqt0axf1i" path="res://assets/origin/grass.webp" id="1_q0wa3"]
+[ext_resource type="Texture2D" uid="uid://dnw45e65barqq" path="res://assets/origin/road.jpg" id="2_q6mrt"]
+[ext_resource type="Texture2D" uid="uid://by1gjm678icj" path="res://assets/origin/first_person_pistol.png" id="3_khcbd"]
+[ext_resource type="Script" uid="uid://cpwlwvsk2dsqn" path="res://cyclists/first_person_pistol.gd" id="4_2dokp"]
+[ext_resource type="Script" uid="uid://dddp0liwsbhlq" path="res://scene_change_button.gd" id="5_toggf"]
+
+[node name="CyclistVictory" type="Node2D"]
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(645.5, 361.5)
+scale = Vector2(1.61125, 1.35272)
+texture = ExtResource("1_q0wa3")
+
+[node name="Road" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(646, 615)
+scale = Vector2(1.22963, 1)
+texture = ExtResource("2_q6mrt")
+region_enabled = true
+region_rect = Rect2(0, 0, 1080, 178)
+
+[node name="Road2" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(642, 399)
+scale = Vector2(1.22963, 1)
+texture = ExtResource("2_q6mrt")
+region_enabled = true
+region_rect = Rect2(0, 0, 1080, 178)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FirstPersonPistol" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1170, 601)
+scale = Vector2(0.337379, 0.337379)
+texture = ExtResource("3_khcbd")
+script = ExtResource("4_2dokp")
+move_range = Vector2(100, 30)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "
+[center][color=AQUA]CYCLISTS[/color][/center]
+
+[center][color=RED]DEAD[/color] [img]res://assets/skull.png[/img][/center]"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Play again?"
+script = ExtResource("5_toggf")
+next_scene_path = "res://cyclists/cyclist_game.tscn"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Next" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Next"
+script = ExtResource("5_toggf")
+next_scene_path = "res://gerald/done_processing/gerald_processed_dialogue_0.tscn"
