@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp24xb7vb33il"]
+
+[ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_fb7rk"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="2_4l0jr"]
+[ext_resource type="Texture2D" uid="uid://cp6eiusdjmkex" path="res://assets/pablo.png" id="3_ngiro"]
+[ext_resource type="PackedScene" uid="uid://tskkofcmktsw" path="res://gerald/passed_path/gerald_dialogue_pass_6.tscn" id="4_4l0jr"]
+[ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="4_mle00"]
+[ext_resource type="Texture2D" uid="uid://vte1op6pbuq4" path="res://assets/origin/Pablo_Escobar_Mug.jpg.webp" id="5_t2m2n"]
+[ext_resource type="Texture2D" uid="uid://dgp813jbbgljf" path="res://assets/tablet.png" id="7_ngiro"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -142)
+scale = Vector2(1.27533, 1.27794)
+texture = ExtResource("1_fb7rk")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("2_4l0jr")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("3_ngiro")
+npc_name = "Pablo"
+npc_dialog = "I need to watch [img]res://assets/origin/instagram.png[/img][color=PINK]reels[/color]."
+npc_color = Color(1, 0, 0, 1)
+next_scene = ExtResource("4_4l0jr")
+
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(300, 387)
+scale = Vector2(0.299618, 0.299618)
+texture = ExtResource("4_mle00")
+
+[node name="PabloEscobar" type="Sprite2D" parent="."]
+position = Vector2(800, 310)
+texture = ExtResource("5_t2m2n")
+
+[node name="Tablet" type="Sprite2D" parent="PabloEscobar"]
+position = Vector2(79, 40)
+rotation = 0.645772
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_ngiro")

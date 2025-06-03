@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://eifjseeod0d0"]
+[gd_scene load_steps=7 format=3 uid="uid://dalqwgyy7evs"]
 
 [ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_y2h4j"]
 [ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="2_r8gfo"]
 [ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_0x6dk"]
 [ext_resource type="Texture2D" uid="uid://dqsl3047i0ikp" path="res://assets/gerald_icon.png" id="4_hh80j"]
-[ext_resource type="PackedScene" uid="uid://dalqwgyy7evs" path="res://gerald/gerald_dialogue_9.tscn" id="5_smm18"]
+[ext_resource type="PackedScene" uid="uid://bxjgq5c6po4gd" path="res://gerald/gerald_dialogue_10.tscn" id="5_y2h4j"]
 
 [sub_resource type="GDScript" id="GDScript_7dm0k"]
 script/source = "extends Node2D
@@ -42,5 +42,5 @@ npc_icon = ExtResource("4_hh80j")
 npc_name = "Gerald"
 npc_dialog = "No... no... I mean... bro..."
 npc_color = Color(1, 0, 1, 1)
-next_scene = ExtResource("5_smm18")
+next_scene = ExtResource("5_y2h4j")
 dialog_duration = 1.0

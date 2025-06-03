@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://c07akb7a0xjws"]
+
+[ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_i3wsh"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="2_5e5nc"]
+[ext_resource type="Texture2D" uid="uid://cp6eiusdjmkex" path="res://assets/pablo.png" id="3_j48l0"]
+[ext_resource type="PackedScene" uid="uid://bn1bc1rlqvkr6" path="res://gerald/passed_path/gerald_dialogue_pass_4.tscn" id="4_i3wsh"]
+[ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="4_j48l0"]
+[ext_resource type="Texture2D" uid="uid://vte1op6pbuq4" path="res://assets/origin/Pablo_Escobar_Mug.jpg.webp" id="5_i3wsh"]
+[ext_resource type="Texture2D" uid="uid://dgp813jbbgljf" path="res://assets/tablet.png" id="7_5e5nc"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[sub_resource type="Animation" id="Animation_j48l0"]
+resource_name = "pablo_fuck"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gerald:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(638, 387), Vector2(300, 387)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PabloEscobarMug_jpg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1456, 310), Vector2(800, 310)]
+}
+
+[sub_resource type="Animation" id="Animation_i3wsh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gerald:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(638, 387)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PabloEscobarMug_jpg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1456, 310)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5e5nc"]
+_data = {
+&"RESET": SubResource("Animation_i3wsh"),
+&"pablo_fuck": SubResource("Animation_j48l0")
+}
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -142)
+scale = Vector2(1.27533, 1.27794)
+texture = ExtResource("1_i3wsh")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("2_5e5nc")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("3_j48l0")
+npc_name = "Pablo"
+npc_dialog = "[color=PURPLE]GERALD[/color]!!!"
+npc_color = Color(1, 0, 0, 1)
+next_scene = ExtResource("4_i3wsh")
+dialog_duration = 2.0
+
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(638, 387)
+scale = Vector2(0.299618, 0.299618)
+texture = ExtResource("4_j48l0")
+
+[node name="PabloEscobarMug_jpg" type="Sprite2D" parent="."]
+position = Vector2(1456, 310)
+texture = ExtResource("5_i3wsh")
+
+[node name="Tablet" type="Sprite2D" parent="PabloEscobarMug_jpg"]
+position = Vector2(79, 40)
+rotation = 0.645772
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_5e5nc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5e5nc")
+}
+autoplay = "pablo_fuck"

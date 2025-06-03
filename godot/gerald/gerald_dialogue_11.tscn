@@ -1,0 +1,154 @@
+[gd_scene load_steps=15 format=3 uid="uid://8fq64q81o72s"]
+
+[ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_tyj8o"]
+[ext_resource type="Texture2D" uid="uid://bwyd3fuj1sosg" path="res://assets/origin/Clipped_image_20241005_154823.png" id="2_tyj8o"]
+[ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="2_ujnvp"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_kux5d"]
+[ext_resource type="Texture2D" uid="uid://dqsl3047i0ikp" path="res://assets/gerald_icon.png" id="4_i4aui"]
+[ext_resource type="PackedScene" uid="uid://bp7c25d26dirp" path="res://gerald/gerald_bump_choice.tscn" id="5_2sgbg"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="5_kux5d"]
+[ext_resource type="Texture2D" uid="uid://dhqtis4d3jxio" path="res://assets/origin/Cocaine.png" id="6_i4aui"]
+[ext_resource type="Texture2D" uid="uid://hd0n5jdmxb5y" path="res://assets/origin/black-rimmed-sunglasses-free-png.webp" id="7_1oebl"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sgbg"]
+shader = ExtResource("5_kux5d")
+shader_parameter/color = Color(1, 0.839216, 0, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_i4aui"]
+resource_name = "drugs_lol"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gerald:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClippedImage20241005154823:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cocaine:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2sgbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gerald:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClippedImage20241005154823:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1oebl"]
+_data = {
+&"RESET": SubResource("Animation_2sgbg"),
+&"drugs_lol": SubResource("Animation_i4aui")
+}
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -142)
+scale = Vector2(1.27533, 1.27794)
+texture = ExtResource("1_tyj8o")
+centered = false
+
+[node name="Gerald" type="Sprite2D" parent="."]
+position = Vector2(638, 387)
+scale = Vector2(0.299618, 0.299618)
+texture = ExtResource("2_ujnvp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_kux5d")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("4_i4aui")
+npc_name = "Gerald"
+npc_dialog = "Before you go, wanna try something new I've been working on? I call it the [color=PURPLE]Gerald Special[/color]."
+npc_color = Color(1, 0, 1, 1)
+next_scene = ExtResource("5_2sgbg")
+dialog_duration = 2.0
+
+[node name="ClippedImage20241005154823" type="Sprite2D" parent="."]
+position = Vector2(623, 275)
+scale = Vector2(0.417881, 0.417881)
+texture = ExtResource("2_tyj8o")
+
+[node name="glasses" type="Sprite2D" parent="ClippedImage20241005154823"]
+position = Vector2(31.1093, -332.631)
+scale = Vector2(0.217326, 0.217326)
+texture = ExtResource("7_1oebl")
+
+[node name="Cocaine" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_2sgbg")
+position = Vector2(523, 452)
+texture = ExtResource("6_i4aui")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1oebl")
+}
+autoplay = "drugs_lol"

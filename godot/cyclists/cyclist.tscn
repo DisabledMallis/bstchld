@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxvc78kjci5rp"]
+
+[ext_resource type="Script" uid="uid://dpndm8oeh5d4h" path="res://cyclists/cyclist.gd" id="1_8lroc"]
+[ext_resource type="Texture2D" uid="uid://belaylv5qi0mi" path="res://assets/origin/cyclist.png" id="1_dskuv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dskuv"]
+radius = 170.0
+
+[node name="Cyclist" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_8lroc")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dskuv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dskuv")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

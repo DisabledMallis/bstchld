@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://c28dxepdhuldn"]
+
+[ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_x6a4w"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="3_3cq6f"]
+[ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_i0i8l"]
+[ext_resource type="PackedScene" uid="uid://dmugax6odd476" path="res://gerald/passed_path/gerald_dialogue_pass_1.tscn" id="4_jwsg8"]
+[ext_resource type="Texture2D" uid="uid://bwyd3fuj1sosg" path="res://assets/origin/Clipped_image_20241005_154823.png" id="5_ytuj7"]
+[ext_resource type="Shader" uid="uid://bnjwtqw025kes" path="res://outline.gdshader" id="6_k36jj"]
+[ext_resource type="Texture2D" uid="uid://hd0n5jdmxb5y" path="res://assets/origin/black-rimmed-sunglasses-free-png.webp" id="6_o0bfx"]
+[ext_resource type="Texture2D" uid="uid://dhqtis4d3jxio" path="res://assets/origin/Cocaine.png" id="7_21lim"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sgbg"]
+shader = ExtResource("6_k36jj")
+shader_parameter/color = Color(1, 0.839216, 0, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_7dm0k")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-9, -142)
+scale = Vector2(1.27533, 1.27794)
+texture = ExtResource("1_x6a4w")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource("3_i0i8l")]
+anchors_preset = -1
+anchor_top = 0.727
+grow_vertical = 1
+size_flags_horizontal = 3
+npc_icon = ExtResource("3_3cq6f")
+npc_name = "BeastChild"
+npc_dialog = "I'd suck [color=PURPLE]homie[/color] silly, but [color=PURPLE]homie[/color]'s fucked if he think I snort anything other than [color=GOLD]Pure Colombian[/color]."
+npc_color = Color(0, 1, 0, 1)
+next_scene = ExtResource("4_jwsg8")
+dialog_duration = 2.0
+
+[node name="ClippedImage20241005154823" type="Sprite2D" parent="."]
+position = Vector2(623, 275)
+scale = Vector2(0.417881, 0.417881)
+texture = ExtResource("5_ytuj7")
+
+[node name="glasses" type="Sprite2D" parent="ClippedImage20241005154823"]
+position = Vector2(31.1093, -332.631)
+scale = Vector2(0.217326, 0.217326)
+texture = ExtResource("6_o0bfx")
+
+[node name="Cocaine" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2sgbg")
+position = Vector2(523, 452)
+texture = ExtResource("7_21lim")

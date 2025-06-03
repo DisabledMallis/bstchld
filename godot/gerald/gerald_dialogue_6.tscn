@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="2_bawfs"]
 [ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_gbf2m"]
 [ext_resource type="Texture2D" uid="uid://dqsl3047i0ikp" path="res://assets/gerald_icon.png" id="4_majmv"]
-[ext_resource type="PackedScene" uid="uid://eifjseeod0d0" path="res://gerald/gerald_dialogue_7.tscn" id="5_fivb4"]
+[ext_resource type="PackedScene" uid="uid://eifjseeod0d0" path="res://gerald/gerald_dialogue_8.tscn" id="5_fivb4"]
 
 [sub_resource type="GDScript" id="GDScript_7dm0k"]
 script/source = "extends Node2D
@@ -40,6 +40,6 @@ grow_vertical = 1
 size_flags_horizontal = 3
 npc_icon = ExtResource("4_majmv")
 npc_name = "Gerald"
-npc_dialog = "Great! I f*cking hate [color=AQUA]cyclists[/color]. Do you think you could take a few out for me?"
+npc_dialog = "Great! I f*cking hate those [color=AQUA]cyclists[/color]. Do you think you could... ease my stress?"
 npc_color = Color(1, 0, 1, 1)
 next_scene = ExtResource("5_fivb4")

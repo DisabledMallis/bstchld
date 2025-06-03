@@ -41,6 +41,6 @@ grow_vertical = 1
 size_flags_horizontal = 3
 npc_icon = ExtResource("4_wlok2")
 npc_name = "Pablo"
-npc_dialog = "A storm completely wiped out my coca stock!"
+npc_dialog = "A flock of [color=AQUA]cyclists[/color] completely wiped out my coca stock!"
 npc_color = Color(1, 0, 0, 1)
 next_scene = ExtResource("5_eo7l0")
