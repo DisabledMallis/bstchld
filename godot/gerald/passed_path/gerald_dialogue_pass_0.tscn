@@ -47,7 +47,7 @@ grow_vertical = 1
 size_flags_horizontal = 3
 npc_icon = ExtResource("3_3cq6f")
 npc_name = "BeastChild"
-npc_dialog = "I'd suck [color=PURPLE]homie[/color] silly, but [color=PURPLE]homie[/color]'s fucked if he think I snort anything other than [color=GOLD]Pure Colombian[/color]."
+npc_dialog = "I'd suck [color=PURPLE]homie[/color] silly, but [color=PURPLE]homie[/color]'s fucked if he think I smell anything but dat [color=GOLD]Pure Colombian[/color]."
 npc_color = Color(0, 1, 0, 1)
 next_scene = ExtResource("4_jwsg8")
 dialog_duration = 2.0

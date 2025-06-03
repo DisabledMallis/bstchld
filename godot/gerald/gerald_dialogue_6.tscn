@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlkw2d42ktkkl"]
+[gd_scene load_steps=10 format=3 uid="uid://dlkw2d42ktkkl"]
 
 [ext_resource type="Texture2D" uid="uid://dk7tkdatw526v" path="res://assets/origin/Superlab1.webp" id="1_fivb4"]
 [ext_resource type="Texture2D" uid="uid://bue0atecr1vrt" path="res://assets/origin/gerald.png" id="2_bawfs"]
 [ext_resource type="PackedScene" uid="uid://biiwq4r5mtuty" path="res://dialog.tscn" id="3_gbf2m"]
 [ext_resource type="Texture2D" uid="uid://dqsl3047i0ikp" path="res://assets/gerald_icon.png" id="4_majmv"]
-[ext_resource type="PackedScene" uid="uid://eifjseeod0d0" path="res://gerald/gerald_dialogue_8.tscn" id="5_fivb4"]
+[ext_resource type="Texture2D" uid="uid://d1nw877vpk7wb" path="res://assets/front_face.png" id="5_bawfs"]
+[ext_resource type="PackedScene" uid="uid://eifjseeod0d0" path="res://gerald/gerald_dialogue_7.tscn" id="5_fivb4"]
 
 [sub_resource type="GDScript" id="GDScript_7dm0k"]
 script/source = "extends Node2D
@@ -15,6 +16,29 @@ func set_scene(scene: PackedScene):
 		get_child(i).queue_free()
 	add_child(scene.instantiate())
 "
+
+[sub_resource type="GDScript" id="GDScript_gbf2m"]
+script/source = "extends Node2D
+class_name Main
+
+func set_scene(scene: PackedScene):
+	for i in range(0, get_child_count()):
+		get_child(i).queue_free()
+	add_child(scene.instantiate())
+"
+
+[sub_resource type="PackedScene" id="PackedScene_majmv"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Main", "script", "Node2D", "Background", "texture_filter", "position", "scale", "texture", "centered", "Sprite2D", "Gerald", "CanvasLayer", "Dialog", "anchors_preset", "anchor_top", "grow_vertical", "npc_icon", "npc_name", "npc_dialog", "npc_color", "next_scene"),
+"node_count": 5,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 9, 3, -1, 5, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 0, 0, 0, 9, 10, -1, 3, 5, 6, 6, 7, 7, 8, 0, 0, 0, 11, 11, -1, 0, 0, 3, 0, 2147483647, 12, 9, 8, 13, 10, 14, 11, 15, 12, 16, 13, 17, 14, 18, 15, 19, 16, 20, 17, 0),
+"variants": [SubResource("GDScript_gbf2m"), 1, Vector2(-9, -142), Vector2(1.27533, 1.27794), ExtResource("1_fivb4"), false, Vector2(638, 387), Vector2(0.299618, 0.299618), ExtResource("2_bawfs"), ExtResource("3_gbf2m"), -1, 0.75, 0, ExtResource("5_bawfs"), "BeastChild", "Alright let's find a bedroom and get to business.", Color(0, 1, 0, 1), ExtResource("5_fivb4")],
+"version": 3
+}
 
 [node name="Main" type="Node2D"]
 script = SubResource("GDScript_7dm0k")
@@ -42,4 +66,4 @@ npc_icon = ExtResource("4_majmv")
 npc_name = "Gerald"
 npc_dialog = "Great! I f*cking hate those [color=AQUA]cyclists[/color]. Do you think you could... ease my stress?"
 npc_color = Color(1, 0, 1, 1)
-next_scene = ExtResource("5_fivb4")
+next_scene = SubResource("PackedScene_majmv")

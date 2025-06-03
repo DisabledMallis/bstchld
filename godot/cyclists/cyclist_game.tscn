@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://by1gjm678icj" path="res://assets/origin/first_person_pistol.png" id="5_p3uqd"]
 [ext_resource type="Script" uid="uid://cpwlwvsk2dsqn" path="res://cyclists/first_person_pistol.gd" id="6_waqn5"]
 
+[sub_resource type="Animation" id="Animation_u4250"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_waqn5"]
 resource_name = "intense_asf"
 length = 0.16
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 2,
 "values": [Vector2(0, 0), Vector2(10, 0), Vector2(10, 10), Vector2(0, 10), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_u4250"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/RichTextLabel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rk8bk"]
@@ -107,6 +107,10 @@ move_range = Vector2(100, 30)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 7.86534
+offset_top = -0.692231
+offset_right = 7.86536
+offset_bottom = -0.692261
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
