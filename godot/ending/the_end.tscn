@@ -3,8 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://cd8t3115cj7pc" path="res://assets/origin/statue_of_liberty.jpeg" id="1_pskgk"]
 [ext_resource type="Script" uid="uid://dddp0liwsbhlq" path="res://scene_change_button.gd" id="2_7pilp"]
 
-[sub_resource type="SystemFont" id="SystemFont_7pilp"]
-font_names = PackedStringArray("Arial")
+[sub_resource type="FontFile" id="FontFile_7pilp"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
 
 [node name="TheEnd" type="Node2D"]
 
@@ -58,7 +67,7 @@ theme_override_constants/margin_bottom = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = SubResource("SystemFont_7pilp")
+theme_override_fonts/normal_font = SubResource("FontFile_7pilp")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]There isn't really a website, it's just this game as a fake captcha.[/center]
