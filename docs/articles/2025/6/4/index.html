@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>AG | Auclair</title>
-        <link href="src/fakerecaptcha.css" rel="stylesheet">
-        <link href="page.css" rel="stylesheet">
+        <link href="/src/fakerecaptcha.css" rel="stylesheet">
+        <link href="/page.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="/favicon.png">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
     </head>
     <body style="background-color: #111111; padding-left: 10%; padding-right: 10%;">
         <div style="display: flex; box-shadow: 0px 0px 5px white; padding: 5px; align-items: center;">
-            <img src="AuclairGazette.svg" style="display: inline; align-self: center;">
+            <img src="/AuclairGazette.svg" style="display: inline; align-self: center;">
         </div>
         <div>
             <h1 class="letter-begin">Attention Distinguished Readers,</h1>
@@ -59,10 +59,10 @@ Warm Regards,
                 <button type="button" id="fkrc-checkbox" class="fkrc-checkbox fkrc-m-p fkrc-line-normal"></button>
             </div>
             <p class="fkrc-im-not-a-robot fkrc-m-p fkrc-line-normal">I'm not a robot</p>
-            <img src="images/captcha_logo.svg" class="fkrc-captcha-logo fkrc-line-normal" alt="">
+            <img src="/images/captcha_logo.svg" class="fkrc-captcha-logo fkrc-line-normal" alt="">
             <p class="fkrc-checkbox-desc fkrc-m-p fkrc-line-normal">CAPTCHA</p>
             <p class="fkrc-checkbox-desc fkrc-m-p fkrc-line-normal">Privacy - Terms</p>
-            <img src="images/captcha_spinner.gif" class="fkrc-spinner fkrc-m-p fkrc-line-normal" alt="" id="fkrc-spinner">
+            <img src="/images/captcha_spinner.gif" class="fkrc-spinner fkrc-m-p fkrc-line-normal" alt="" id="fkrc-spinner">
         </div>
         <!-- Captcha checkbox verification window -->
         <div id="fkrc-verifywin-window" class="fkrc-verifywin-window">
@@ -73,7 +73,7 @@ Warm Regards,
                     <span class="fkrc-verifywin-header-text-medium fkrc-m-p fkrc-block">to proceed</span>
                 </header>
                 <main class="fkrc-verifywin-main">
-                    <iframe src="export/bstchld.html" width="1280" height="720"></iframe>
+                    <iframe src="/export/bstchld.html" width="1280" height="720"></iframe>
                 </main>
             </div>
             <footer class="fkrc-verifywin-container fkrc-verifywin-footer">
@@ -83,9 +83,9 @@ Warm Regards,
                 <button type="button" class="fkrc-verifywin-verify-button fkrc-block" id="fkrc-verifywin-verify-button" disabled>Verify</button>
             </footer>
         </div>
-        <img src="images/captcha_arrow.svg" alt="" class="fkrc-verifywin-window-arrow" id="fkrc-verifywin-window-arrow"/>
+        <img src="/images/captcha_arrow.svg" alt="" class="fkrc-verifywin-window-arrow" id="fkrc-verifywin-window-arrow"/>
     </div>
     <!-- Fake captcha end -->
-        <script src="src/fakerecaptcha.js"></script>
+        <script src="/src/fakerecaptcha.js"></script>
     </body>
 </html>
