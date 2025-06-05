@@ -46,8 +46,8 @@ anchor_top = 0.727
 grow_vertical = 1
 size_flags_horizontal = 3
 npc_icon = ExtResource("3_tjlvm")
-npc_name = "BeastChild (thinking)"
-npc_dialog = "(Does he really think [color=RED]Pablo[/color] won't notice [img]res://assets/skull.png[/img]FENT in his product?)"
+npc_name = "BeastChild [thinking]"
+npc_dialog = "[Does he really think [color=RED]Pablo[/color] won't notice [img]res://assets/skull.png[/img]FENT in his product?]"
 npc_color = Color(0, 1, 0, 1)
 next_scene = ExtResource("4_lyyj3")
 dialog_duration = 2.0
