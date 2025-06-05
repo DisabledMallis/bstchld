@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>AG | Auclair</title>
+        <link href="src/fakerecaptcha.css" rel="stylesheet">
+        <link href="page.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="/favicon.png">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+
+        <meta content="Cartel Expresses Admiration for Internet Pop Culture in Interview with Vice News" property="og:title" />
+        <meta content="In an extraordinary turn of events, Vice News conducted an exclusive interview with members of a notorious drug cartel, who expressed their admiration for YouTube sensation 'BeastChild'. The infamous YouTuber, known for his provocative videos portraying himself as a cartel member and pretending to engage in illicit activities, has apparently captured the hearts of these criminal organizations." property="og:description" />
+        <meta content="https://auclairgazette.com/" property="og:url" />
+        <meta content="https://auclairgazette.com/AuclairGazette.svg" property="og:image" />
+        <meta content="#FFD700" data-react-helmet="true" name="theme-color" />
+    </head>
+    <body style="background-color: #111111; padding-left: 10%; padding-right: 10%;">
+        <div style="display: flex; box-shadow: 0px 0px 5px white; padding: 5px; align-items: center;">
+            <img src="AuclairGazette.svg" style="display: inline; align-self: center;">
+        </div>
+        <div>
+            <h1 class="letter-begin">Attention Distinguished Readers,</h1>
+            <p class="letter-content">We hope this message finds you in good health and high spirits.
+<br>
+<br>
+Over the past few days, we have faced an <span style="color: red;"><b>unexpected wave of cyberattacks</b></span> in the form of 
+Distributed Denial of Service (DDOS) attacks. These malicious acts have been <span style="color: red;">aimed at 
+disrupting our service</span> and making it difficult for you, our esteemed readership, to access 
+our content.
+<br>
+<br>
+To <span style="color: greenyellow">safeguard our platform</span> and ensure the continuity of our service, we have had to implement 
+an <span style="color: aqua">initial CAPTCHA page</span> to protect our valued content from unwanted intrusions. <b>We apologize 
+for any inconvenience this may cause and we thank you for your understanding and cooperation.</b>
+<br>
+<br>
+To proceed, please click on the CAPTCHA box below and follow the instructions provided. Once 
+verified, you will be granted access to our website content. Your continued support is 
+greatly appreciated as we work tirelessly to maintain a secure and uninterrupted experience 
+for all of our esteemed readers.
+<br>
+<br>
+Thank you for choosing AuclairGazette and for your loyalty throughout the years. We look 
+forward to continuing to serve you with the finest news, analysis, and commentary.
+<br>
+<br>
+Warm Regards,
+<br>
+<span class="letter-begin">- Auclair Gazette</span></p>
+        </div>
+    <!-- Fake captcha start -->
+    <div class="fkrc-container fkrc-m-p">
+        <!-- Captcha checkbox widget -->
+        <div id="fkrc-checkbox-window" class="fkrc-checkbox-window fkrc-m-p fkrc-block">
+            <div class="fkrc-checkbox-container fkrc-m-p">
+                <button type="button" id="fkrc-checkbox" class="fkrc-checkbox fkrc-m-p fkrc-line-normal"></button>
+            </div>
+            <p class="fkrc-im-not-a-robot fkrc-m-p fkrc-line-normal">I'm not a robot</p>
+            <img src="images/captcha_logo.svg" class="fkrc-captcha-logo fkrc-line-normal" alt="">
+            <p class="fkrc-checkbox-desc fkrc-m-p fkrc-line-normal">CAPTCHA</p>
+            <p class="fkrc-checkbox-desc fkrc-m-p fkrc-line-normal">Privacy - Terms</p>
+            <img src="images/captcha_spinner.gif" class="fkrc-spinner fkrc-m-p fkrc-line-normal" alt="" id="fkrc-spinner">
+        </div>
+        <!-- Captcha checkbox verification window -->
+        <div id="fkrc-verifywin-window" class="fkrc-verifywin-window">
+            <div class="fkrc-verifywin-container">
+                <header class="fkrc-verifywin-header">
+                    <span class="fkrc-verifywin-header-text-medium fkrc-m-p fkrc-block">Complete this simple</span>
+                    <span class="fkrc-verifywin-header-text-big fkrc-m-p fkrc-block">Game</span>
+                    <span class="fkrc-verifywin-header-text-medium fkrc-m-p fkrc-block">to proceed</span>
+                </header>
+                <main class="fkrc-verifywin-main">
+                    <iframe src="export/bstchld.html" width="1280" height="720"></iframe>
+                </main>
+            </div>
+            <footer class="fkrc-verifywin-container fkrc-verifywin-footer">
+                <div class="fkrc-verifywin-footer-left">
+                    Press the verify button once complete.
+                </div>
+                <button type="button" class="fkrc-verifywin-verify-button fkrc-block" id="fkrc-verifywin-verify-button" disabled>Verify</button>
+            </footer>
+        </div>
+        <img src="images/captcha_arrow.svg" alt="" class="fkrc-verifywin-window-arrow" id="fkrc-verifywin-window-arrow"/>
+    </div>
+    <!-- Fake captcha end -->
+        <script src="src/fakerecaptcha.js"></script>
+    </body>
+</html>
