@@ -1,0 +1,49 @@
+.monsieur-la-doulaise-regular {
+    font-family: "Monsieur La Doulaise", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.mea-culpa-regular {
+    font-family: "Mea Culpa", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.letter-begin {
+    color: white;
+
+    font-family: "Arial", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 64px;
+
+    text-align: center;
+}
+
+.letter-content {
+    color: white;
+
+    font-family: "Arial";
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Horizontal centering */
+  height: 200px;   /* Add a height for the container to work */
+}
+
+.centered-div {
+  width: 200px;
+  height: 100px; /* Add a height for the div to work */
+  background-color: lightblue; /* Optional: for visual clarity */
+}
