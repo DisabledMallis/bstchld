@@ -137,7 +137,7 @@ text = "
 
 
 
-[center]%d/%d Cyclists Killed[/center]"
+[center]%d of %d Cyclists Killed[/center]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
