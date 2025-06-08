@@ -65,9 +65,7 @@ text = "[center]There isn't really a website, it's just this game as a fake capt
 
 [center][img]res://assets/origin/discord.png[/img] https://discord.gg/F73SNpwG[/center]
 [center][img]res://assets/origin/discord.png[/img] @michael_gorney[/center]
-[center][img]res://assets/origin/twitter-x-logo.png[/img] @michael_gorney[/center]
-
-[center]PS: Substance abuse is a disease! If you live in the US and struggle with it like I do, you can call [color=GREEN]988[/color] for the [color=GREEN]Suicide and Crisis Lifeline[/color]. They can help you get on the road to recovery.[/center] [color=RED]You are never alone[/color]!"
+[center][img]res://assets/origin/twitter-x-logo.png[/img] @michael_gorney[/center]"
 
 [node name="PlayAgainButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
